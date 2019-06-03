@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>起步
+    </title>
+</head>
+
+<body>
+    <div id="app">
+        <div>1.响应式渲染：{{message}}</div>
+        <div>2.v-bind指令：<span v-bind:title="message2">鼠标悬停在我身上</span></div>
+        <div>
+            3.v-for循环指令：
+            <ol>
+                <li v-for="todo in todolist">
+                    {{todo.text}}
+                </li>
+            </ol>
+        </div>
+        <div>4.v-on事件绑定：
+            <button v-on:click="add">数字+1</button>，我是数字：{{num}}
+        </div>
+        <div>5.v-model数据上线绑定：我是输入框<input type="text" v-model="message3">,我是结果显示:{{message3}}</div>
+        <div>
+            <!-- <table style="border: 1px solid #333;"> -->
+                <!-- <colgroup>
+                    <col width="30%">
+                    <col width="70%">
+                </colgroup>
+                <thead></thead>
+                <tbody> -->
+                        <tr-item v-for="item in books" v-bind:book="item" v-bind:key="item.index"></tr-item>
+                <!-- </tbody> -->
+                
+            <!-- </table> -->
+            </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('tr-item', {
+            props: ['book'],
+            template: '<tr style="border:1px solid #666;"><td>{{book.index}}</td><td>{{book.text}}</td></tr>'
+        });
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: "vue 第一个案例",
+                message2: "这是一个动态时间" + new Date().toString(),
+                todolist: [{
+                        text: "语文"
+                    },
+                    {
+                        text: "英语"
+                    },
+                    {
+                        text: "数学"
+                    }
+                ],
+                num: 0,
+                message3: "",
+                books:[
+                    {
+                        index:1,
+                        text:"语文书"
+                    },
+                    {
+                        index:2,
+                        text:"数学书"
+                    },
+                    {
+                        index:3,
+                        text:"英语书"
+                    }
+                ]
+            },
+            methods: {
+                add: function () {
+                    this.num = this.num + 1;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
