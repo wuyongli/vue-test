@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>列表渲染</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            1.循环一个数组:
+            <ol>
+                <li v-for="item in arr1">{{item}}</li>
+            </ol>
+        </div>
+        <div>
+            2.循环一个对象
+            <ul>
+                <li v-for="(val,key,index) in arr2" style="list-style-type: none">{{index+1}}. {{key}}-{{val}}</li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            arr1:["xiaobai","lilei","hanmeimei"],
+            arr2:{name:"bobo",age:18,sex:"boy"},
+        }
+    });
+    </script>
+</body>
+</html>
