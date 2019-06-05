@@ -20,6 +20,16 @@
                 <li v-for="(val,key,index) in arr2" style="list-style-type: none">{{index+1}}. {{key}}-{{val}}</li>
             </ul>
         </div>
+        <div id="todos">
+            3.简单实现一个todos
+            <div>
+                <form @submit.prevent="addNewTodo">
+                    <label for="new-todo">添加一个新的条目</label>
+                    <input type="text">
+                </form>
+            </div>
+            <ul></ul>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>

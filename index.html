@@ -25,26 +25,26 @@
             <button v-on:click="add">数字+1</button>，我是数字：{{num}}
         </div>
         <div>5.v-model数据上线绑定：我是输入框<input type="text" v-model="message3">,我是结果显示:{{message3}}</div>
-        <div>
-            <!-- <table style="border: 1px solid #333;"> -->
-                <!-- <colgroup>
+        <div>6.这里需要注意，一些HTML元素有严格限制，所以需要使用 is 属相，参考：<a target="_blank" href="https://cn.vuejs.org/v2/guide/components.html#%E8%A7%A3%E6%9E%90-DOM-%E6%A8%A1%E6%9D%BF%E6%97%B6%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">《解析dom模板时的注意事项》</a>
+            <table style="border: 1px solid #333;width:200px;">
+                <colgroup>
                     <col width="30%">
                     <col width="70%">
                 </colgroup>
                 <thead></thead>
-                <tbody> -->
-                        <tr-item v-for="item in books" v-bind:book="item" v-bind:key="item.index"></tr-item>
-                <!-- </tbody> -->
-                
-            <!-- </table> -->
-            </div>
+                <tbody>
+                    <tr is="tr-item" v-for="item in books" v-bind:book="item" v-bind:key="item.index"></tr>
+                </tbody>
+
+            </table>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         Vue.component('tr-item', {
             props: ['book'],
-            template: '<tr style="border:1px solid #666;"><td>{{book.index}}</td><td>{{book.text}}</td></tr>'
+            template: '<tr ><td style="border:1px solid #666;">{{book.index}}</td><td style="border:1px solid #666;">{{book.text}}</td></tr>'
         });
         var app = new Vue({
             el: "#app",
@@ -63,18 +63,17 @@
                 ],
                 num: 0,
                 message3: "",
-                books:[
-                    {
-                        index:1,
-                        text:"语文书"
+                books: [{
+                        index: 1,
+                        text: "语文书"
                     },
                     {
-                        index:2,
-                        text:"数学书"
+                        index: 2,
+                        text: "数学书"
                     },
                     {
-                        index:3,
-                        text:"英语书"
+                        index: 3,
+                        text: "英语书"
                     }
                 ]
             },
