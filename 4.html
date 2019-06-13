@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .box1{
+            display:inline-block;
+            width:100px;
+            height: 100px;
+            border:1px solid #999;
+        }
+    </style>
+    <title>组件传值</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            1.父组件向子组件传值
+            <div>
+                输入变量<input type="text" v-model="msg">
+            </div>
+            <sondiv v-bind:info="msg"></sondiv>
+        </div>
+        <div>
+            2.子组件向父组件传值
+            <div></div>
+        </div>
+        <div>
+            3.点击变色的组件
+            <color-box></color-box>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('color-box', {
+            data: function () {
+                return {
+                    index: 0,
+                    colors: ['red', 'blue', 'yellow','green', 'black']
+                }
+            },
+            methods: {
+                changecolor: function () {
+                    this.index = this.index + 1;
+                    if (this.index == 4) {
+                        this.index = 0
+                    }
+                }
+            },
+            template: '<div class="box1" @click="changecolor" v-bind:style="{background:colors[index]}"></div>',
+        });
+        var app = new Vue({
+            el: "#app",
+            data: {
+                msg: ""
+            },
+            components: {
+                sondiv: {
+                    props: ["info"],
+                    template: '<div>父组件传给我的信息是：{{info}}</div>'
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>
