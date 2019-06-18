@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>method和computed</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <button @click="addToA">a++</button> <button @click="addToB">b++</button>
+            <div>
+                a:{{a}} <br />
+                b:{{b}}
+            </div>
+        </div>
+        <hr />
+        <div>
+            <h3>使用method和keyup事件，来实现一个加法</h3>
+            <!-- 写法1，使用时间触发方法 -->
+            <!-- <input type="text" v-model="num1" @keyup="getsum"> + <input type="text" v-model="num2" @keyup="getsum"> =
+            {{sum}} -->
+            <!-- 写法2，直接在试图中调用方法 -->
+            
+            <input type="text" v-model="num1"> + <input type="text" v-model="num2"> =
+            {{getsum()}}
+            <div>{{test1()}}</div>
+        </div>
+        <div>
+            <h3>使用计算属性computed</h3>
+            <!-- <input type="text" v-model="num1"> + <input type="text" v-model="num2"> =
+            {{getsum2}} -->
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                a: 0,
+                b: 0,
+                num1: 0,
+                num2: 0,
+                sum: 0
+            },
+            methods: {
+                addToA: function () {
+                    this.a++;
+                    console.log("a++");
+                },
+                addToB: function () {
+                    this.b++;
+                    console.log("b++");
+                },
+                test1:function(){
+                    console.log("test1");
+                    return "test1"
+                },
+                getsum: function () {
+                    this.sum = parseFloat(this.num1 || 0) + parseFloat(this.num2 || 0);
+                    console.log("getsum")
+                    return this.sum; 
+                },
+            },
+            // computed:{
+            //     getsum2:function(){
+            //         this.sum = parseFloat(this.num1 || 0) + parseFloat(this.num2 || 0);
+            //     }
+            // },
+        });
+    </script>
+
+
+</body>
+
+</html>
