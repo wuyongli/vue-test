@@ -24,11 +24,11 @@
             <!-- 写法1，使用时间触发方法 -->
             <!-- <input type="text" v-model="num1" @keyup="getsum"> + <input type="text" v-model="num2" @keyup="getsum"> =
             {{sum}} -->
-            <!-- 写法2，直接在试图中调用方法 -->
+            <!-- 写法2，直接在试图中调用方法,初始化 -->
             
             <input type="text" v-model="num1"> + <input type="text" v-model="num2"> =
             {{getsum()}}
-            <div>{{test1()}}</div>
+            <!-- <div>直接在视图中使用method中的方法{{test1()}}</div> -->
         </div>
         <div>
             <h3>使用计算属性computed</h3>

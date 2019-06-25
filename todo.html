@@ -26,7 +26,10 @@
                     console.log(this.data)
                 }
             },
-            template: '<li v-for="item in list" ><span>{{item}}</span></li>'
+            template: `
+            <li v-for="item in list" >
+                <span>{{item}}</span>
+            </li`
 
         });
         var app = new Vue({
